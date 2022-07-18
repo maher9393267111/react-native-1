@@ -6,7 +6,7 @@ import About from './screens/Login';
 import Signup from './screens/Signup';
  import {NavigationContainer,DefaultTheme} from '@react-navigation/native';
  import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
+ import Context from './context/index'
  const theme = {
   ...DefaultTheme,
   colors: {
@@ -22,6 +22,7 @@ const Stack = createNativeStackNavigator();
 //import { useFonts } from "expo-font";
 export default function App() {
   return (
+    <Context>
     <NavigationContainer 
     
     theme={theme}>
@@ -37,6 +38,7 @@ export default function App() {
      
     </Stack.Navigator>
   </NavigationContainer>
+  </Context>
   );
 }
 
