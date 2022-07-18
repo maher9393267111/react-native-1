@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './screens/Home';
 import About from './screens/Login';
-
+import Signup from './screens/Signup';
  import {NavigationContainer,DefaultTheme} from '@react-navigation/native';
  import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -29,10 +29,12 @@ export default function App() {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Home"
+      initialRouteName="Signup"
     >
-      <Stack.Screen name="About" component={About} />
-      <Stack.Screen name="about" component={Home} />
+       <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Login" component={About} />
+      <Stack.Screen name="Home" component={Home} />
+     
     </Stack.Navigator>
   </NavigationContainer>
   );
