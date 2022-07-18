@@ -1,18 +1,27 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import Constants from 'expo-constants';
-// Firebase config
-const firebaseConfig = {
-  apiKey: Constants.manifest.extra.apiKey,
-  authDomain: Constants.manifest.extra.authDomain,
-  projectId: Constants.manifest.extra.projectId,
-  storageBucket: Constants.manifest.extra.storageBucket,
-  messagingSenderId: Constants.manifest.extra.messagingSenderId,
-  appId: Constants.manifest.extra.appId,
-  databaseURL: Constants.manifest.extra.databaseURL
-};
 
+import { initializeApp,getApp } from 'firebase/app';
+import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { getAnalytics, logEvent } from "firebase/analytics"
+import { getMessaging, onMessage } from "firebase/messaging";
+//import firebase from "firebase/app";
+const firebaseConfig =  initializeApp({
+   
+
+  apiKey: "AIzaSyA1aPqjHTrPxoFlVxF-lLiAI3cy2i3SR5k",
+  authDomain: "maher-vue.firebaseapp.com",
+  databaseURL: "https://maher-vue-default-rtdb.firebaseio.com",
+  projectId: "maher-vue",
+  storageBucket: "maher-vue.appspot.com",
+  messagingSenderId: "694861415607",
+  appId: "1:694861415607:web:b00faf53f77cfc4d5c7932"
+
+
+
+
+
+});
 
 
 let firebaseApp;
@@ -28,8 +37,40 @@ try {
 
 
 
-// initialize firebase
-initializeApp(firebaseConfig);
+// Initialize Firebase
+//export const app = initializeApp(firebaseConfig);
+export const app = firebaseApp
+export const storage = getStorage(app);
+export const db = getFirestore();
 export const auth = getAuth();
-export const database = getFirestore();
 
+
+
+export const analytics = () => {
+  if (typeof window !== "undefined") {
+   //  return firebase.analytics()
+    return getAnalytics(app)
+  } else {
+     return null
+  }
+}
+
+
+
+ //export  const analytics = getAnalytics(app);
+
+
+export {
+  getStorage,
+  ref,
+  getDownloadURL,
+  uploadBytes,
+}
+
+
+
+// const messaging = getMessaging();
+// onMessage(messaging, (payload) => {
+//   console.log("Message received. ", payload);
+//   // ...
+// });

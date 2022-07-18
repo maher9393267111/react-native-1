@@ -11,11 +11,11 @@ export default function Signup({ navigation }) {
   const [password, setPassword] = useState('');
 
     const {signUp}=useAuth()
-const onHandleSignup = () => {
+const onHandleSignup =async () => {
     console.log(email, password);
     if (email !== '' && password !== '') {
-  //createUserWithEmailAndPassword
-  signUp(auth, email, password)
+  
+signUp(auth, email, password)
         .then(() => console.log('Signup success'))
         .catch((err) => Alert.alert("Login error", err.message));
     }
@@ -52,9 +52,9 @@ const onHandleSignup = () => {
       </TouchableOpacity>
       <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
         <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Don't have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={{color: '#f57c00', fontWeight: '600', fontSize: 14}}> Log In</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       </SafeAreaView>
       <StatusBar barStyle="light-content" />

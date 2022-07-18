@@ -9,12 +9,12 @@ export default function Login({ navigation }) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const {signIn}=useAuth()
-  const onHandleLogin = () => {
+//const {signIn}=useAuth()
+  const onHandleLogin =async () => {
     console.log(email, password);
     if (email !== "" && password !== "") {
-    //  signInWithEmailAndPassword
-      signIn(auth, email, password)
+      //  signIn
+  await   signInWithEmailAndPassword(auth, email, password)
      // console.log("email", email);
         .then(() => console.log("Login success"))
         .catch((err) =>  Alert.alert("Login error", err.message))
